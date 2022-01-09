@@ -23,9 +23,9 @@
           SFZX: ${{ secrets.SFZX }}               # 是否在校，填"1"表示在校，"0"表示不在
   ```
 
-3. 根据2中env的变量，在Github中添加对应的值
+3. 根据2中env的变量，在仓库的Settings-->Secrets中添加对应的值
 
-   ![image-20220109205700774](https://images.xiaoniuren666.com/img/image-20220109205700774.png)
+   ![image-20220109211120815](https://images.xiaoniuren666.com/img/image-20220109211120815.png)
 
    依次将USERNAME、PASSWORD、AREA、PROVINCE、CITY、SFZX等环境变量添加进去
 
@@ -44,7 +44,8 @@
      schedule:
        - cron: '0 1 * * *'
        - cron: '0 17 * * *'
-   #原来设置的时间是UTC时间的每日1:00 AM，即China Time的9:00 AM，但是因为近期Actions出现波动，导致很多人没打上卡，现在增加UTC时间的17:00(China Time次日1:00)
+   #原来设置的时间是UTC时间的每日1:00 AM，即China Time的9:00 AM
+   #但是因为近期Actions出现波动，导致很多人没打上卡，现在增加UTC时间的17:00(China Time次日1:00)
    ```
 
    
