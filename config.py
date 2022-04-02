@@ -29,7 +29,7 @@ DATA = {
 	"area": "北京市  海淀区",
 	"province": "北京市",
 	"city": "北京市",
-	"created": "1608086660",  # 时间戳
+	"created": "1648777464",  # 时间戳
 	"sfzx": "1",  # 是否在校
 	"sfjcwhry": "0",  # 是否接触武汉人员
 	"sfcyglq": "0",  # 是否处于观察期
@@ -62,4 +62,9 @@ DATA = {
 	"sfyqjzgc": "",  # 未给出
 	"jrsfqzys": "",  # 未给出
 	"jrsfqzfy": "",  # 未给出
+	#new added
+	"ymjzxgqk":"", #疫苗接种相关情况
+	"xwxgymjzqk":"3",  #校外接种情况
+	"sfjzxgym":"1", #是否已接种第一针新冠疫苗
+	"sfjzdezxgym":"1", #是否已接种第二针新冠疫苗
 }
