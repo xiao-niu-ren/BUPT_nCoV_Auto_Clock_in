@@ -62,8 +62,8 @@ class Automatic(object):
 				print("\t" + item.name + "=",item.value)
 
 			print("\nPost...")
+			data = json.dumps(data)
 			res = requests.post(url=FORM_URL, data=data, cookies=self.cookies)
-			print("\n",res)
 			res = json.loads(res.text)
 
 		except Exception as e:
