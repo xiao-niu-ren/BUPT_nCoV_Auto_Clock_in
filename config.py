@@ -1,7 +1,7 @@
 LOGIN_URL = "https://app.bupt.edu.cn/uc/wap/login/check"  # 授权URL
 FORM_URL = "https://app.bupt.edu.cn/ncov/wap/default/save"  # 填报URL
 
-
+#oldInfo
 DATA = {
 	"ismoved": "0",  # 当前地点是否与上次在同一城市
 	"jhfjrq": "",  # 计划返京时间
