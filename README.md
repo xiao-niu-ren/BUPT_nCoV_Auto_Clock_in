@@ -15,23 +15,22 @@
 
   ``` yaml
   env:
-          USERNAME: ${{ secrets.USERNAME }}       # 学号
+          USERs: ${{ secrets.USERs }}       # (学号,密码,server昵称，是否在校) # 是否在校，填"1"表示在校，"0"表示不在
           PASSWORD: ${{ secrets.PASSWORD }}       # 信息门户密码
           AREA: ${{ secrets.AREA }}               # 所在地区，例如例如"北京市+海淀区"，用+号隔开
           PROVINCE: ${{ secrets.PROVINCE }}       # 所在省份，例如"北京市"
           CITY: ${{ secrets.CITY }}               # 所在城市，例如"北京市"
-          SFZX: ${{ secrets.SFZX }}               # 是否在校，填"1"表示在校，"0"表示不在
   ```
 
 3. 根据2中env的变量，在仓库的Settings-->Secrets中添加对应的值
 
    ![image-20220109211120815](https://images.xiaoniuren666.com/img/image-20220109211120815.png)
 
-   依次将USERNAME、PASSWORD、AREA、PROVINCE、CITY、SFZX等环境变量添加进去
+   依次将USERs、AREA、PROVINCE、CITY等环境变量添加进去
 
-   以USERNAME为例：
+   以USERs为例：
 
-   ![image-20220109205823048](https://images.xiaoniuren666.com/img/image-20220109205823048.png)
+   [('20********','key','nickname',0)]
 
 4. 在添加完毕后，点击Actions，进入自动操作的提示界面，开启Workflows
 
