@@ -191,11 +191,11 @@ try:
 	)
 	print(f'通过「{notifier.PLATFORM_NAME}」给用户发送通知')
 	notifier.notify(
-		success=Flag_success, # 打卡是否成功
-		msg=responce, # 服务器返回的响应
-		data=data, # 发送的打卡信息
-		username=USERNAME, # 用户的唯一标识
-		name=NAME # 消息显示的用户名
+		success=[Flag_success], # 打卡是否成功
+		msg=[responce], # 服务器返回的响应
+		data=[data], # 发送的打卡信息
+		username=[USERNAME], # 用户的唯一标识
+		name=[NAME] # 消息显示的用户名
 	)
 except:
 	print(r"可能由于 「SERVER_KEY未设置」 或 「SERVER_KEY不正确」 或 「网络波动」 ，SERVER酱发送失败")
