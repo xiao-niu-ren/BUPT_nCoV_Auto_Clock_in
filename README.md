@@ -34,7 +34,7 @@
        AREA: ["北京市 海淀区"]
        PROVINCE: ["北京市"]
        CITY: ["北京市"]
-       SERVER_KEY: *********
+       SERVER_KEY: ['*********']
   ```
   
 4. 在添加完毕后，点击Actions，进入自动操作的提示界面，开启Workflows
