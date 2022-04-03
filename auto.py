@@ -108,7 +108,6 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 AREA     = eval(os.environ['AREA'])       # 使用 `+` 连接省、市、县
 PROVINCE = eval(os.environ['PROVINCE'])
 CITY     = eval(os.environ['CITY'])
-SFZX     = eval(os.environ['SFZX'])
 SERVER_KEY = os.environ['SERVER_KEY']
 USERs = eval(os.environ['USERs'])
 
@@ -120,7 +119,7 @@ Flag_successs,responces,data_ps,USERNAMEs,NAMEs= [],[],[],[],[]
 for i in range(len(USERs)):
 	# 设置打卡成功flag，默认成功为1
 	Flag_success = 1
-	USERNAME,PASSWORD,NAME=USERs[i]
+	USERNAME,PASSWORD,NAME,SFZX=USERs[i]
 	logging.info('Start authorize for %s ...', str(USERNAME))
 	'''
 	try:
@@ -167,7 +166,7 @@ for i in range(len(USERs)):
 		data["area"] = AREA[i]
 		data["city"] = CITY[i]
 		data["province"] = PROVINCE[i]
-		data["sfzx"] = SFZX[i]
+		data["sfzx"] = SFZX
 
 		logging.info('Form: area: %s, is in university: %s', str(AREA[i]) ,bool(SFZX[i]))
 		logging.debug(data)
