@@ -105,10 +105,10 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 # 环境变量获取
 ###############################################################################
 
-AREA     = os.environ['AREA']       # 使用 `+` 连接省、市、县
-PROVINCE = os.environ['PROVINCE']
-CITY     = os.environ['CITY']
-SFZX     = os.environ['SFZX']
+AREA     = eval(os.environ['AREA'])       # 使用 `+` 连接省、市、县
+PROVINCE = eval(os.environ['PROVINCE'])
+CITY     = eval(os.environ['CITY'])
+SFZX     = eval(os.environ['SFZX'])
 SERVER_KEY = os.environ['SERVER_KEY']
 USERs = eval(os.environ['USERs'])
 
