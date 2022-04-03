@@ -186,7 +186,7 @@ for i in range(len(USERs)):
 	# 借鉴https://github.com/zzp-seeker/bupt-ncov-auto-report
 	data_p = AREA[i]
 	Flag_successs+=[Flag_success]
-	responces+=[responce]
+	responces+=[responce.json()['m']]
 	data_ps+=[data_p]
 	USERNAMEs+=[USERNAME]
 	NAMEs+=[NAME]	
