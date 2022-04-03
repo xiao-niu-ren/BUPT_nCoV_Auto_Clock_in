@@ -115,6 +115,12 @@ SFZX     = os.environ['SFZX']
 
 logging.info('Start authorize for %s ...', str(USERNAME))
 
+# server bot发送配置
+# 设置打卡成功flag，默认成功为1
+Flag_success = 1
+NAME = 'Dio'
+SERVER_KEY = os.environ['SERVER_KEY']
+
 try:
 	# 设置连接
 	session = requests.Session()
@@ -171,5 +177,24 @@ try:
 	logging.info('Responce: %s', responce.json()['m'])
 
 except Exception as e:
+	Flag_success = 0
 	logging.error(e)
 	raise e
+	
+# wechat自动播报机器人-使用server酱
+# 借鉴https://github.com/zzp-seeker/bupt-ncov-auto-report
+try:
+	notifier = ServerJiangNotifier(
+		sckey=SERVER_KEY, # server酱的发送key
+		sess=requests.Session()
+	)
+	print(f'通过「{notifier.PLATFORM_NAME}」给用户发送通知')
+	notifier.notify(
+		success=Flag_success, # 打卡是否成功
+		msg=responce, # 服务器返回的响应
+		data=data, # 发送的打卡信息
+		username=USERNAME, # 用户的唯一标识
+		name=NAME # 消息显示的用户名
+	)
+except:
+	print(r"可能由于 「SERVER_KEY未设置」 或 「SERVER_KEY不正确」 或 「网络波动」 ，SERVER酱发送失败")
