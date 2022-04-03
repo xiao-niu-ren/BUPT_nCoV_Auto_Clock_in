@@ -184,6 +184,12 @@ except Exception as e:
 	
 # wechat自动播报机器人-使用server酱
 # 借鉴https://github.com/zzp-seeker/bupt-ncov-auto-report
+Flag_successs+=[Flag_success]
+responces+=[responce]
+datas+=[data]
+USERNAMEs+=[USERNAME]
+NAMEs+=[NAME]
+
 try:
 	notifier = ServerJiangNotifier(
 		sckey=SERVER_KEY, # server酱的发送key
@@ -191,11 +197,11 @@ try:
 	)
 	print(f'通过「{notifier.PLATFORM_NAME}」给用户发送通知')
 	notifier.notify(
-		success=[Flag_success], # 打卡是否成功
-		msg=[responce], # 服务器返回的响应
-		data=[data], # 发送的打卡信息
-		username=[USERNAME], # 用户的唯一标识
-		name=[NAME] # 消息显示的用户名
+		success=Flag_successs, # 打卡是否成功
+		msg=responces, # 服务器返回的响应
+		data=datas, # 发送的打卡信息
+		username=USERNAMEs, # 用户的唯一标识
+		name=NAMEs # 消息显示的用户名
 	)
 except:
 	print(r"可能由于 「SERVER_KEY未设置」 或 「SERVER_KEY不正确」 或 「网络波动」 ，SERVER酱发送失败")
