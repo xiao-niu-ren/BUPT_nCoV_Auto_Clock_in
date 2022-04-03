@@ -24,6 +24,7 @@ class INotifier(metaclass=ABCMeta):
 
 import os        
 USERs = eval(os.environ['USERs'])
+TIMEOUT_SECOND = 25
 
 class ServerJiangNotifier(INotifier):
     PLATFORM_NAME = 'Server 酱'
@@ -74,7 +75,6 @@ class ServerJiangNotifier(INotifier):
         
         # Server 不允许短时间重复发送相同内容，故加上时间
         time_str = str(int(time.time()))[-3:]
-
 
         # 调用 Server 酱接口发送消息
         sc_res_raw = self._sess.post(
