@@ -121,7 +121,7 @@ for i in range(len(USERs)):
 	Flag_success = 1
 	USERNAME,PASSWORD,NAME,SFZX=USERs[i]
 	logging.info('Start authorize for %s ...', str(USERNAME))
-	'''
+	
 	try:
 		# 设置连接
 		session = requests.Session()
@@ -181,11 +181,9 @@ for i in range(len(USERs)):
 		Flag_success = 0
 		logging.error(e)
 		raise e
-	'''	
+		
 	# wechat自动播报机器人-使用server酱
 	# 借鉴https://github.com/zzp-seeker/bupt-ncov-auto-report
-	responce = 'test'
-	# test
 	data_p = AREA[i]
 	Flag_successs+=[Flag_success]
 	responces+=[responce]
