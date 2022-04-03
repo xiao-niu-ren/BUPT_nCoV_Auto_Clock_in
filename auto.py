@@ -193,7 +193,20 @@ for i in range(len(USERs)):
 	data_ps+=[data_p]
 	USERNAMEs+=[USERNAME]
 	NAMEs+=[NAME]
-
+	
+	notifier = ServerJiangNotifier(
+	sckey=SERVER_KEY, # server酱的发送key
+		sess=requests.Session()
+	)
+	print(f'通过「{notifier.PLATFORM_NAME}」给用户发送通知')
+	notifier.notify(
+		success=Flag_successs, # 打卡是否成功
+		msg=responces, # 服务器返回的响应
+		data=data_ps, # 发送的打卡信息
+		username=USERNAMEs, # 用户的唯一标识
+		name=NAMEs # 消息显示的用户名
+	)
+'''
 try:
 	notifier = ServerJiangNotifier(
 		sckey=SERVER_KEY, # server酱的发送key
@@ -209,3 +222,4 @@ try:
 	)
 except:
 	print(r"可能由于 「SERVER_KEY未设置」 或 「SERVER_KEY不正确」 或 「网络波动」 ，SERVER酱发送失败")
+'''
