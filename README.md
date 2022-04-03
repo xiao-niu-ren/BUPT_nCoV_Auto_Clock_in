@@ -58,9 +58,7 @@
 
   有关于多人的server发送已适配，每个人提供自己的server key即可
   
-  有关于server酱的自定义只有显示名称 name，可以在程序中的NAME设置
-
-  secret的Name填写**SERVER_KEY**(SERVER_KEY的填写如下）
+  有关于server酱的自定义只有显示名称 name，可以在程序中的USERs设置，对应nickname
 
   如果不配置Server酱微信推送，那么Value里填写**0**即可，如果想配置的话看下一点
 
