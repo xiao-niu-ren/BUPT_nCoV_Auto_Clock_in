@@ -186,19 +186,14 @@ for i in range(len(USERs)):
 	# wechat自动播报机器人-使用server酱
 	# 借鉴https://github.com/zzp-seeker/bupt-ncov-auto-report
 	responce = 'test'
-	print('area',len(AREA[i]))
-	print('CITY',len(CITY[i]))
-	print('PROVINCE',len(PROVINCE[i]))
-	print('SFZX',len(SFZX[i]))
 	# test
 	data_p = AREA[i]
 	Flag_successs+=[Flag_success]
 	responces+=[responce]
 	data_ps+=[data_p]
 	USERNAMEs+=[USERNAME]
-	NAMEs+=[NAME]
-	
-'''
+	NAMEs+=[NAME]	
+
 try:
 	notifier = ServerJiangNotifier(
 		sckey=SERVER_KEY, # server酱的发送key
@@ -214,4 +209,3 @@ try:
 	)
 except:
 	print(r"可能由于 「SERVER_KEY未设置」 或 「SERVER_KEY不正确」 或 「网络波动」 ，SERVER酱发送失败")
-'''
