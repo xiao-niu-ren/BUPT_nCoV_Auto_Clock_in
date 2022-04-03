@@ -17,7 +17,7 @@
   env:
           USERNAME: ${{ secrets.USERNAME }}       # 学号
           PASSWORD: ${{ secrets.PASSWORD }}       # 信息门户密码
-          AREA: ${{ secrets.AREA }}               # 所在地区，例如例如"北京市+海淀区"，用+号隔开
+          AREA: ${{ secrets.AREA }}               # 所在地区，例如例如"北京市 海淀区"，用空格号隔开
           PROVINCE: ${{ secrets.PROVINCE }}       # 所在省份，例如"北京市"
           CITY: ${{ secrets.CITY }}               # 所在城市，例如"北京市"
           SFZX: ${{ secrets.SFZX }}               # 是否在校，填"1"表示在校，"0"表示不在
