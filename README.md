@@ -28,13 +28,24 @@
    ![image-20220109211120815](https://images.xiaoniuren666.com/img/image-20220109211120815.png)
 
    依次将USERs、AREA、PROVINCE、CITY等环境变量添加进去
-
+   若是单人的格式为
+   
   ``` yaml
        USERs: [('20********','key','nickname','0')]
        AREA: ["北京市 海淀区"]
        PROVINCE: ["北京市"]
        CITY: ["北京市"]
-       SERVER_KEY: ['*********']
+       SERVER_KEY: ['*********',]
+  ```
+   
+   若是多人的格式为
+
+  ``` yaml
+       USERs: [('20********','key','nickname','0'),(第二个人的信息)]
+       AREA: ["北京市 海淀区","**"]
+       PROVINCE: ["北京市","**"]
+       CITY: ["北京市","**"]
+       SERVER_KEY: ['*********',"**"]
   ```
   
 4. 在添加完毕后，点击Actions，进入自动操作的提示界面，开启Workflows
