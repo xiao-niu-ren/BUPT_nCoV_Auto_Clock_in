@@ -42,13 +42,13 @@ class ServerJiangNotifier(INotifier):
             if success[i]:
                 title_suc += [f'{name[i]}']
                 if msg[i] is not None:
-                    body = f'\n学号{username[i]},{name[i]}\n填报位置:{data[i]}\n 填报成功, 服务器的返回是:\n{msg[i]}\n'
+                    body = f'\n学号{username[i]},{name[i]}\n填报位置:\n{data[i]}\n 填报成功, 服务器的返回是:\n{msg[i]}\n'
                 else:
                     body = '成功'
             else:
                 title_eor += [f'{name[i]}']
                 if msg[i] is not None:
-                    body = f'学号{username[i]}\n填报位置:{data[i]}\n 填报失败：产生如下异常：\n{msg[i]}\n'
+                    body = f'学号{username[i]}\n填报位置:\n{data[i]}\n 填报失败：产生如下异常：\n{msg[i]}\n'
                 else:
                     body = '失败'
             bodys+=[body]
