@@ -10,7 +10,7 @@ from lxml import etree
 ###############################################################################
 
 # server bot发送配置
-from serverJiang import *
+from server_bot import *
 # 设置打卡成功flag，默认成功为1
 Flag_success = 1
 NAME = 'Dio' # 消息发送昵称
