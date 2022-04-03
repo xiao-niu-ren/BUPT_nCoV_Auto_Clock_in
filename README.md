@@ -51,6 +51,7 @@
 6. 记得每60天要更新下～
 
 7.关于server 酱
+
 有关于server酱的自定义只有显示名称 name，可以在程序中的NAME设置
 secret的Name填写**SERVER_KEY**(SERVER_KEY的填写如下）
 如果不配置Server酱微信推送，那么Value里填写**0**即可，如果想配置的话看下一点
