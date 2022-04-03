@@ -186,6 +186,10 @@ for i in range(len(USERs)):
 	# wechat自动播报机器人-使用server酱
 	# 借鉴https://github.com/zzp-seeker/bupt-ncov-auto-report
 	responce = 'test'
+	print('area',AREA[i])
+	print('CITY',CITY[i])
+	print('PROVINCE',PROVINCE[i])
+	print('SFZX',SFZX[i])
 	# test
 	data_p = AREA[i]
 	Flag_successs+=[Flag_success]
