@@ -34,7 +34,7 @@ class ServerJiangNotifier(INotifier):
         title_suc,title_eor,bodys=[],[],[]
         title_suc_str,title_eor_str,body_str='','',''
 
-        for i in range(len(USERS)):
+        for i in range(len(USERs)):
             if success[i]:
                 title_suc += [f'{name[i]}']
                 if msg[i] is not None:
