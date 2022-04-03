@@ -11,9 +11,6 @@ from lxml import etree
 
 # server bot发送配置
 from server_bot import *
-# 设置打卡成功flag，默认成功为1
-Flag_success = 1
-NAME = 'Dio' # 消息发送昵称
 
 # 登陆URL
 LOGIN_URL = 'https://auth.bupt.edu.cn/authserver/login'
@@ -108,91 +105,94 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 # 环境变量获取
 ###############################################################################
 
-USERNAME = os.environ['USERNAME']
-PASSWORD = os.environ['PASSWORD']
 AREA     = os.environ['AREA']       # 使用 `+` 连接省、市、县
 PROVINCE = os.environ['PROVINCE']
 CITY     = os.environ['CITY']
 SFZX     = os.environ['SFZX']
 SERVER_KEY = os.environ['SERVER_KEY']
+USERs = eval(os.environ['USERs'])
 
 ###############################################################################
 # 进行CAS认证, 获取cookie
 ###############################################################################
+Flag_successs,responces,data_ps,USERNAMEs,NAMEs= [],[],[],[],[]
 
-logging.info('Start authorize for %s ...', str(USERNAME))
-'''
-try:
-	# 设置连接
-	session = requests.Session()
+for i in range(len(USERs)):
+	# 设置打卡成功flag，默认成功为1
+	Flag_success = 1
+	USERNAME,PASSWORD,NAME=USERs[i]
+	logging.info('Start authorize for %s ...', str(USERNAME))
+	'''
+	try:
+		# 设置连接
+		session = requests.Session()
 
-	# 发送请求，设置cookies
-	headers = { "User-Agent": USER_AGENT }
-	params = { "service": SERVICE }
-	responce = session.get(url=LOGIN_URL, headers=headers, params=params)
-	logging.debug('Get: %s %s', LOGIN_URL, responce)
+		# 发送请求，设置cookies
+		headers = { "User-Agent": USER_AGENT }
+		params = { "service": SERVICE }
+		responce = session.get(url=LOGIN_URL, headers=headers, params=params)
+		logging.debug('Get: %s %s', LOGIN_URL, responce)
 
-	# 获取execution
-	html = etree.HTML(responce.content)
-	execution = html.xpath(EXECUTION_XPATH)[0]
-	logging.debug('execution: %s', execution)
+		# 获取execution
+		html = etree.HTML(responce.content)
+		execution = html.xpath(EXECUTION_XPATH)[0]
+		logging.debug('execution: %s', execution)
 
-	# 构造表单数据
-	data = {
-		'username': USERNAME,
-		'password': PASSWORD,
-		'submit': "登录",
-		'type': 'username_password',
-		'execution': execution,
-		'_eventId': "submit"
-	}
-	logging.debug(data)
+		# 构造表单数据
+		data = {
+			'username': USERNAME,
+			'password': PASSWORD,
+			'submit': "登录",
+			'type': 'username_password',
+			'execution': execution,
+			'_eventId': "submit"
+		}
+		logging.debug(data)
 
-	# 登录到疫情防控通
-	responce = session.post(url=LOGIN_URL, headers=headers, data=data)
-	logging.debug('Post %s, responce: %s', LOGIN_URL, responce)
+		# 登录到疫情防控通
+		responce = session.post(url=LOGIN_URL, headers=headers, data=data)
+		logging.debug('Post %s, responce: %s', LOGIN_URL, responce)
 
 
-	logging.info('Authorize successed !!!')
+		logging.info('Authorize successed !!!')
 
-###############################################################################
-# 进行填报
-###############################################################################
+	###############################################################################
+	# 进行填报
+	###############################################################################
 
-	logging.info('Start form ...')
-	# 设置表单数据
-	data = DATA
-	data['created'] = str(round(time.time()))
-	data["area"] = AREA
-	data["city"] = CITY
-	data["province"] = PROVINCE
-	data["sfzx"] = SFZX
+		logging.info('Start form ...')
+		# 设置表单数据
+		data = DATA
+		data['created'] = str(round(time.time()))
+		data["area"] = AREA[i]
+		data["city"] = CITY[i]
+		data["province"] = PROVINCE[i]
+		data["sfzx"] = SFZX[i]
 
-	logging.info('Form: area: %s, is in university: %s', str(AREA) ,bool(SFZX))
-	logging.debug(data)
+		logging.info('Form: area: %s, is in university: %s', str(AREA[i]) ,bool(SFZX[i]))
+		logging.debug(data)
 
-	# 填报
-	responce = session.post(url=FORM_URL, headers=headers, data=data)
-	logging.debug('Post %s, responce: %s', FORM_URL, responce)
-	logging.info('Result below :')
-	logging.info('Responce: %s', responce.json()['m'])
+		# 填报
+		responce = session.post(url=FORM_URL, headers=headers, data=data)
+		logging.debug('Post %s, responce: %s', FORM_URL, responce)
+		logging.info('Result below :')
+		logging.info('Responce: %s', responce.json()['m'])
 
-except Exception as e:
-	Flag_success = 0
-	logging.error(e)
-	raise e
-'''	
-# wechat自动播报机器人-使用server酱
-# 借鉴https://github.com/zzp-seeker/bupt-ncov-auto-report
-Flag_successs,responces,datas,USERNAMEs,NAMEs= [],[],[],[],[]
-data = DATA
-responce = []
-# test
-Flag_successs+=[Flag_success]
-responces+=[responce]
-datas+=[data]
-USERNAMEs+=[USERNAME]
-NAMEs+=[NAME]
+	except Exception as e:
+		Flag_success = 0
+		logging.error(e)
+		raise e
+	'''	
+	# wechat自动播报机器人-使用server酱
+	# 借鉴https://github.com/zzp-seeker/bupt-ncov-auto-report
+	responce = 'test'
+	# test
+	data_p = AREA[i]
+	Flag_successs+=[Flag_success]
+	responces+=[responce]
+	data_ps+=[data_p]
+	USERNAMEs+=[USERNAME]
+	NAMEs+=[NAME]
 
 try:
 	notifier = ServerJiangNotifier(
@@ -203,7 +203,7 @@ try:
 	notifier.notify(
 		success=Flag_successs, # 打卡是否成功
 		msg=responces, # 服务器返回的响应
-		data=datas, # 发送的打卡信息
+		data=data_ps, # 发送的打卡信息
 		username=USERNAMEs, # 用户的唯一标识
 		name=NAMEs # 消息显示的用户名
 	)
