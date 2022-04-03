@@ -113,7 +113,6 @@ AREA     = os.environ['AREA']       # 使用 `+` 连接省、市、县
 PROVINCE = os.environ['PROVINCE']
 CITY     = os.environ['CITY']
 SFZX     = os.environ['SFZX']
-# server酱的发送key
 SERVER_KEY = os.environ['SERVER_KEY']
 
 ###############################################################################
