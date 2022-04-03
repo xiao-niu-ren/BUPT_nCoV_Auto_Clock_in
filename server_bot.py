@@ -80,7 +80,7 @@ class ServerJiangNotifier(INotifier):
         sc_res_raw = self._sess.post(
             f'https://sctapi.ftqq.com/{self._sckey}.send',
             data={
-                'title': f'{datetime.date.today()}:{title_suc_str\n}{title_eor_str\n}',
+                'title': f'{datetime.date.today()}:{title_suc_str}{title_eor_str}',
                 'desp': f'{body_str}',
             },
             timeout=TIMEOUT_SECOND,
