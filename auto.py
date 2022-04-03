@@ -121,7 +121,7 @@ SERVER_KEY = os.environ['SERVER_KEY']
 ###############################################################################
 
 logging.info('Start authorize for %s ...', str(USERNAME))
-
+'''
 try:
 	# 设置连接
 	session = requests.Session()
@@ -181,9 +181,12 @@ except Exception as e:
 	Flag_success = 0
 	logging.error(e)
 	raise e
-	
+'''	
 # wechat自动播报机器人-使用server酱
 # 借鉴https://github.com/zzp-seeker/bupt-ncov-auto-report
+data = DATA
+responce = []
+# test
 Flag_successs+=[Flag_success]
 responces+=[responce]
 datas+=[data]
