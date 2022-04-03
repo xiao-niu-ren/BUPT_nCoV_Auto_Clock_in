@@ -32,7 +32,6 @@ jobs:
         AREA: ${{ secrets.AREA }}
         PROVINCE: ${{ secrets.PROVINCE }}
         CITY: ${{ secrets.CITY }}
-        SFZX: ${{ secrets.SFZX }}
         USERs: ${{ secrets.USERs }}
         SERVER_KEY: ${{ secrets.SERVER_KEY }}
       run: python auto.py
