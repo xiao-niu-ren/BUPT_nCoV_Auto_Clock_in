@@ -184,8 +184,8 @@ except Exception as e:
 '''	
 # wechat自动播报机器人-使用server酱
 # 借鉴https://github.com/zzp-seeker/bupt-ncov-auto-report
+Flag_successs,responces,datas,USERNAMEs,NAMEs= [],[],[],[],[]
 data = DATA
-responce = []
 # test
 Flag_successs+=[Flag_success]
 responces+=[responce]
