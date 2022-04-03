@@ -22,7 +22,7 @@ class INotifier(metaclass=ABCMeta):
         :return: None
         """
 
-        
+import os        
 USERs = eval(os.environ['USERs'])
 
 class ServerJiangNotifier(INotifier):
