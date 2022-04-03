@@ -30,11 +30,11 @@
    依次将USERs、AREA、PROVINCE、CITY等环境变量添加进去
 
   ``` yaml
-   USERs：[('20********','key','nickname',0)]
-   AREA：["北京市 海淀区"]
-   PROVINCE：["北京市"]
-   CITY：["北京市"]
-   SERVER_KEY: *********
+       USERs: [('20********','key','nickname',0)]
+       AREA: ["北京市 海淀区"]
+       PROVINCE: ["北京市"]
+       CITY: ["北京市"]
+       SERVER_KEY: *********
   ```
   
 4. 在添加完毕后，点击Actions，进入自动操作的提示界面，开启Workflows
@@ -56,12 +56,12 @@
 
 7.关于server 酱
 
-有关于多人的消息序列暂未适配，所以目前使用单数组将信息包含起来
+  有关于多人的消息序列暂未适配，所以目前使用单数组将信息包含起来
 
-有关于server酱的自定义只有显示名称 name，可以在程序中的NAME设置
+  有关于server酱的自定义只有显示名称 name，可以在程序中的NAME设置
 
-secret的Name填写**SERVER_KEY**(SERVER_KEY的填写如下）
+  secret的Name填写**SERVER_KEY**(SERVER_KEY的填写如下）
 
-如果不配置Server酱微信推送，那么Value里填写**0**即可，如果想配置的话看下一点
+  如果不配置Server酱微信推送，那么Value里填写**0**即可，如果想配置的话看下一点
 
-**（可选）** Value填写Server酱的SendKey（在这里查看 [https://sct.ftqq.com/sendkey](https://sct.ftqq.com/sendkey)），在此之前需要微信注册企业号，并加入Server酱内部应用，具体流程见 [https://sct.ftqq.com/forward](https://sct.ftqq.com/forward)，看起来比较多，但也不是很麻烦，一步步照做即可
+  **（可选）** Value填写Server酱的SendKey（在这里查看 [https://sct.ftqq.com/sendkey](https://sct.ftqq.com/sendkey)），在此之前需要微信注册企业号，并加入Server酱内部应用，具体流程见 [https://sct.ftqq.com/forward](https://sct.ftqq.com/forward)，看起来比较多，但也不是很麻烦，一步步照做即可
