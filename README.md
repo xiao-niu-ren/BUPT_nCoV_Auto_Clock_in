@@ -20,6 +20,7 @@
           AREA: ${{ secrets.AREA }}               # 所在地区，例如例如"北京市+海淀区"，用+号隔开
           PROVINCE: ${{ secrets.PROVINCE }}       # 所在省份，例如"北京市"
           CITY: ${{ secrets.CITY }}               # 所在城市，例如"北京市"
+          SERVER_KEY: ${{ secrets.SERVER_KEY }}   # server酱的发送key
   ```
 
 3. 根据2中env的变量，在仓库的Settings-->Secrets中添加对应的值
