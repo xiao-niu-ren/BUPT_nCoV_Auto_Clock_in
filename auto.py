@@ -108,7 +108,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 AREA     = eval(os.environ['AREA'])       # 使用 `+` 连接省、市、县
 PROVINCE = eval(os.environ['PROVINCE'])
 CITY     = eval(os.environ['CITY'])
-SERVER_KEY = os.environ['SERVER_KEY']
+SERVER_KEY = eval(os.environ['SERVER_KEY'])
 USERs = eval(os.environ['USERs'])
 
 ###############################################################################
@@ -190,19 +190,18 @@ for i in range(len(USERs)):
 	data_ps+=[data_p]
 	USERNAMEs+=[USERNAME]
 	NAMEs+=[NAME]	
-
-try:
-	notifier = ServerJiangNotifier(
-		sckey=SERVER_KEY, # server酱的发送key
-		sess=requests.Session()
-	)
-	print(f'通过「{notifier.PLATFORM_NAME}」给用户发送通知')
-	notifier.notify(
-		success=Flag_successs, # 打卡是否成功
-		msg=responces, # 服务器返回的响应
-		data=data_ps, # 发送的打卡信息
-		username=USERNAMEs, # 用户的唯一标识
-		name=NAMEs # 消息显示的用户名
-	)
-except:
-	print(r"可能由于 「SERVER_KEY未设置」 或 「SERVER_KEY不正确」 或 「网络波动」 ，SERVER酱发送失败")
+	try:
+		notifier = ServerJiangNotifier(
+			sckey=SERVER_KEY[i], # server酱的发送key
+			sess=requests.Session()
+		)
+		print(f'通过「{notifier.PLATFORM_NAME}」给用户发送通知')
+		notifier.notify(
+			success=Flag_successs, # 打卡是否成功
+			msg=responces, # 服务器返回的响应
+			data=data_ps, # 发送的打卡信息
+			username=USERNAMEs, # 用户的唯一标识
+			name=NAMEs # 消息显示的用户名
+		)
+	except:
+		print(r"可能由于 「SERVER_KEY未设置」 或 「SERVER_KEY不正确」 或 「网络波动」 ，SERVER酱发送失败")
