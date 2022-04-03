@@ -56,8 +56,8 @@
 
 7. 关于server 酱
 
-  有关于多人的server发送暂未适配，所以目前使用单server发送
-
+  有关于多人的server发送已适配，每个人提供自己的server key即可
+  
   有关于server酱的自定义只有显示名称 name，可以在程序中的NAME设置
 
   secret的Name填写**SERVER_KEY**(SERVER_KEY的填写如下）
