@@ -22,6 +22,9 @@ class INotifier(metaclass=ABCMeta):
         :return: None
         """
 
+        
+USERs = eval(os.environ['USERs'])
+
 class ServerJiangNotifier(INotifier):
     PLATFORM_NAME = 'Server 酱'
 
