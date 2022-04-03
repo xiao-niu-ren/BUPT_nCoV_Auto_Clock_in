@@ -84,6 +84,10 @@ DATA = {
 	"xjzd":       "",           					# 现居住地
 	"xkqq":       "",           					# 未解释
 	
+	"ymjzxgqk":"", #疫苗接种相关情况
+	"xwxgymjzqk":"3",  #校外接种情况
+	"sfjzxgym":"1", #是否已接种第一针新冠疫苗
+	"sfjzdezxgym":"1", #是否已接种第二针新冠疫苗
 	
 }
 
