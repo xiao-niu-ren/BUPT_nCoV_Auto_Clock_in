@@ -26,7 +26,7 @@ EXECUTION_XPATH = '/html/body/div[1]/div/form/div[5]/input[2]/@value'
 
 # 表单信息
 DATA = {
-	"area":       "北京市+海淀区",                 	# 地区，中间用+隔开
+	"area":       "北京市 海淀区",                 	# 地区，中间用空格隔开
 	"city":       "北京市",							# 城市
 	"province":   "北京市",							# 所在省份
 	"sfzx":       "1",          					# 是否在校
