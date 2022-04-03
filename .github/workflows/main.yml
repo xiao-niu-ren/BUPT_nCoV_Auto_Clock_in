@@ -35,4 +35,5 @@ jobs:
         PROVINCE: ${{ secrets.PROVINCE }}
         CITY: ${{ secrets.CITY }}
         SFZX: ${{ secrets.SFZX }}
+        SERVER_KEY: ${{ secrets.SERVER_KEY }}
       run: python auto.py
