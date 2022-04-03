@@ -30,7 +30,7 @@
    依次将USERs、AREA、PROVINCE、CITY等环境变量添加进去
 
   ``` yaml
-       USERs: [('20********','key','nickname',0)]
+       USERs: [('20********','key','nickname','0')]
        AREA: ["北京市 海淀区"]
        PROVINCE: ["北京市"]
        CITY: ["北京市"]
