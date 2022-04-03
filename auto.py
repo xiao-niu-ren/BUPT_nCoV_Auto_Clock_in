@@ -9,6 +9,11 @@ from lxml import etree
 # 常量设置
 ###############################################################################
 
+# server bot发送配置
+# 设置打卡成功flag，默认成功为1
+Flag_success = 1
+NAME = 'Dio' # 消息发送昵称
+
 # 登陆URL
 LOGIN_URL = 'https://auth.bupt.edu.cn/authserver/login'
 
@@ -108,18 +113,14 @@ AREA     = os.environ['AREA']       # 使用 `+` 连接省、市、县
 PROVINCE = os.environ['PROVINCE']
 CITY     = os.environ['CITY']
 SFZX     = os.environ['SFZX']
+# server酱的发送key
+SERVER_KEY = os.environ['SERVER_KEY']
 
 ###############################################################################
 # 进行CAS认证, 获取cookie
 ###############################################################################
 
 logging.info('Start authorize for %s ...', str(USERNAME))
-
-# server bot发送配置
-# 设置打卡成功flag，默认成功为1
-Flag_success = 1
-NAME = 'Dio'
-SERVER_KEY = os.environ['SERVER_KEY']
 
 try:
 	# 设置连接
