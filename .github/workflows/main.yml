@@ -29,8 +29,6 @@ jobs:
         pip install -r requirements.txt
     - name: 'signin'
       env:
-        USERNAME: ${{ secrets.USERNAME }}
-        PASSWORD: ${{ secrets.PASSWORD }}
         AREA: ${{ secrets.AREA }}
         PROVINCE: ${{ secrets.PROVINCE }}
         CITY: ${{ secrets.CITY }}
