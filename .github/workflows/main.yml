@@ -29,8 +29,6 @@ jobs:
     - name: 'signin'
       env:
         AREA: ${{ secrets.AREA }}
-        PROVINCE: ${{ secrets.PROVINCE }}
-        CITY: ${{ secrets.CITY }}
         USERs: ${{ secrets.USERs }}
         SERVER_KEY: ${{ secrets.SERVER_KEY }}
       run: python auto.py
