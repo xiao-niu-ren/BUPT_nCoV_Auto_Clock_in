@@ -29,7 +29,7 @@ EXECUTION_XPATH = '/html/body/div[1]/div/form/div[5]/input[2]/@value'
 
 # 表单信息
 DATA = {
-	"area":       "北京市+海淀区",                 	# 地区，中间用+隔开
+	"area":       "北京市 海淀区",                 	# 地区，中间用" "隔开
 	"city":       "北京市",							# 城市
 	"province":   "北京市",							# 所在省份
 	"sfzx":       "1",          					# 是否在校
@@ -105,9 +105,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 # 环境变量获取
 ###############################################################################
 
-AREA     = eval(os.environ['AREA'])       # 使用 `+` 连接省、市、县
-PROVINCE = eval(os.environ['PROVINCE'])
-CITY     = eval(os.environ['CITY'])
+AREA     = eval(os.environ['AREA'])       # 使用 ` ` 连接省、市、县
 SERVER_KEY = eval(os.environ['SERVER_KEY'])
 USERs = eval(os.environ['USERs'])
 
@@ -164,8 +162,13 @@ for i in range(len(USERs)):
 		data = DATA
 		data['created'] = str(round(time.time()))
 		data["area"] = AREA[i]
-		data["city"] = CITY[i]
-		data["province"] = PROVINCE[i]
+		postion = AREA[i].split()
+		if postion[0] in ['北京市','上海市','重庆市','天津市']:
+			city = postion[0]
+		else:
+			city = postion[1]
+		data["city"] = city
+		data["province"] = postion[0]
 		data["sfzx"] = SFZX
 
 		logging.info('Form: area: %s, is in university: %s', str(AREA[i]) ,bool(SFZX[i]))
