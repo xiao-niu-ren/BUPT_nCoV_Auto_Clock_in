@@ -16,12 +16,12 @@
   ``` yaml
   env:
           USERs: ${{ secrets.USERs }}       # (学号,密码,server昵称，是否在校) # 是否在校，填"1"表示在校，"0"表示不在
-          PASSWORD: ${{ secrets.PASSWORD }}       # 信息门户密码
-          AREA: ${{ secrets.AREA }}               # 所在地区，例如例如"北京市 海淀区"
-          PROVINCE: ${{ secrets.PROVINCE }}       # 所在省份，例如"北京市"
-          CITY: ${{ secrets.CITY }}               # 所在城市，例如"北京市"
+          AREA: ${{ secrets.AREA }}               # 所在地区，例如例如"北京市 海淀区" 或 "xx省 xx市 xx区"
           SERVER_KEY: ${{ secrets.SERVER_KEY }}   # server酱的发送key
   ```
+  
+  北京市|上海市|重庆市|天津市 这些地区的所在地区格式是"xx市 xx区"
+  其他地点为 "xx省 xx市 xx区"
 
 3. 根据2中env的变量，在仓库的Settings-->Secrets中添加对应的值
 
@@ -33,8 +33,6 @@
   ``` yaml
        USERs: [('20********','key','nickname','0')]
        AREA: ["北京市 海淀区"]
-       PROVINCE: ["北京市"]
-       CITY: ["北京市"]
        SERVER_KEY: ['*********',]
   ```
    
@@ -43,8 +41,6 @@
   ``` yaml
        USERs: [('20********','key','nickname','0'),(第二个人的信息)]
        AREA: ["北京市 海淀区","**"]
-       PROVINCE: ["北京市","**"]
-       CITY: ["北京市","**"]
        SERVER_KEY: ['*********',"**"]
   ```
   
