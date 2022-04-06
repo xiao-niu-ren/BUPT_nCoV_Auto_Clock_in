@@ -32,7 +32,7 @@ DATA = {
 	"sfzx":       "1",          					# 是否在校
 	"created":    "1608086660", 					# 时间戳
 
-	"xwxgymjzqk": "2",          					# 疫苗接种情况：2针
+	"xwxgymjzqk": "3",          					# 疫苗接种情况：3针
 	"csmjry":     "0",          					# 近14日内本人/共同居住者是否去过疫情发生场所
 	"date":       "20201216",   					# 填报日期
 	"fjsj":       "20200830",   					# 返京时间
@@ -100,7 +100,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 USERNAME = os.environ['USERNAME']
 PASSWORD = os.environ['PASSWORD']
-AREA     = os.environ['AREA']       # 使用 `+` 连接省、市、县
+AREA     = os.environ['AREA']       
 PROVINCE = os.environ['PROVINCE']
 CITY     = os.environ['CITY']
 SFZX     = os.environ['SFZX']
