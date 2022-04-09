@@ -157,7 +157,7 @@ try:
 	data['province'] = PROVINCE
 	data['sfzx'] = SFZX
 
-	logging.info('Form: area: %s, is in university: %s', str(AREA) ,bool(SFZX))
+	logging.info('Form: area: %s, is in university: %s', str(AREA) ,bool(int(SFZX)))
 	logging.debug(data)
 
 	# 填报
