@@ -26,10 +26,10 @@ EXECUTION_XPATH = '/html/body/div[1]/div/form/div[5]/input[2]/@value'
 
 # 表单信息
 DATA = {
-	"area":       "北京市 海淀区",                 	# 地区，中间用空格隔开
-	"city":       "北京市",							# 城市
-	"province":   "北京市",							# 所在省份
-	"sfzx":       "1",          					# 是否在校
+	"area":       "",                 				# 地区，中间用空格隔开
+	"city":       "",								# 城市
+	"province":   "",								# 所在省份
+	"sfzx":       "",          						# 是否在校
 	"created":    "1608086660", 					# 时间戳
 
 	"xwxgymjzqk": "3",          					# 疫苗接种情况：3针
@@ -152,10 +152,10 @@ try:
 	# 设置表单数据
 	data = DATA
 	data['created'] = str(round(time.time()))
-	data["area"] = AREA
-	data["city"] = CITY
-	data["province"] = PROVINCE
-	data["sfzx"] = SFZX
+	data['area'] = AREA
+	data['city'] = CITY
+	data['province'] = PROVINCE
+	data['sfzx'] = SFZX
 
 	logging.info('Form: area: %s, is in university: %s', str(AREA) ,bool(SFZX))
 	logging.debug(data)
