@@ -109,7 +109,7 @@ SFZX     = os.environ['SFZX']
 # 进行CAS认证, 获取cookie
 ###############################################################################
 
-logging.info('Start authorize for %s ...', str(USERNAME))
+logging.info('Start authorize for %s ...', "id:" + USERNAME)
 
 try:
 	# 设置连接
@@ -157,7 +157,7 @@ try:
 	data['province'] = PROVINCE
 	data['sfzx'] = SFZX
 
-	logging.info('Form: area: %s, is in university: %s', str(AREA) ,bool(int(SFZX)))
+	logging.info('Form: area: %s, is in university: %s', "地区:" + str(AREA) ,bool(int(SFZX)))
 	logging.debug(data)
 
 	# 填报
