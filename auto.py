@@ -158,13 +158,12 @@ try:
 	data['province'] = PROVINCE
 	data['sfzx'] = SFZX
 
-	logging.info('Form: area: %s, is in university: %s', "#".join(AREA.split(" ")) ,"Yes" if bool(int(SFZX)) == 1 else "No")
+	logging.info('Form: area: %s, is in university: %s', "#".join([i + "" for i in AREA]) ,"Yes" if bool(int(SFZX)) == 1 else "No")
 	logging.debug(data)
 
 	# 填报
 	responce = session.post(url=FORM_URL, headers=headers, data=data)
 	logging.debug('Post %s, responce: %s', FORM_URL, responce)
-	logging.info('Result below :')
 	logging.info('Responce: %s', responce.json()['m'])
 
 except Exception as e:
