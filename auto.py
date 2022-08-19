@@ -108,8 +108,15 @@ SFZX     = os.environ['SFZX']
 ###############################################################################
 # 进行CAS认证, 获取cookie
 ###############################################################################
+#secret的value会被github屏蔽为*
+LOG_USERNAME = ""
+LOG_AREA = ""
+for char in USERNAME:
+    LOG_USERNAME += char + "-"
+for char in AREA:
+    LOG_AREA += char + "-"
 
-logging.info('Start authorize for %s ...', USERNAME)
+logging.info('Start authorize for %s ...', LOG_USERNAME)
 
 try:
 	# 设置连接
@@ -157,7 +164,7 @@ try:
 	data['province'] = PROVINCE
 	data['sfzx'] = SFZX
 
-	logging.info('Form: area: %s, is in university: %s', str(AREA) ,bool(int(SFZX)))
+	logging.info('Form: area: %s, is in university: %s', LOG_AREA ,"在校" if bool(int(SFZX)) == 1 else "不在校")
 	logging.debug(data)
 
 	# 填报
