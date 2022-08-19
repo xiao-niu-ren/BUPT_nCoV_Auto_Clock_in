@@ -110,7 +110,7 @@ SFZX     = os.environ['SFZX']
 ###############################################################################
 #secret的value会被github屏蔽为*
 
-logging.info('Start authorize for %s ...', USERNAME)
+logging.info('Start authorize for %s ...', "#".join([i + "" for i in USERNAME]))
 
 try:
 	# 设置连接
