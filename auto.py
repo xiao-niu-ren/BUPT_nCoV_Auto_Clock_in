@@ -107,11 +107,14 @@ SFZX = os.environ['SFZX']
 ###############################################################################
 # 进行CAS认证, 获取cookie
 ###############################################################################
-# secret的value会被github屏蔽为*
+'''
+secret的value会被github屏蔽为*
+所以要用#分隔一些内容
+'''
 
 logging.info('Start authorize for %s ...', "#".join([
-                                                        "零" if i == "0" else "壹" if i == "1" else "贰" if i == "2" else "叁" if i == "3" else "肆" if i == "4" else "伍" if i == "5" else "陆" if i == "6" else "柒" if i == "7" else "捌" if i == "8" else "玖" if i == "9" else i
-                                                        for i in USERNAME]))
+    "零" if i == "0" else "壹" if i == "1" else "贰" if i == "2" else "叁" if i == "3" else "肆" if i == "4" else "伍" if i == "5" else "陆" if i == "6" else "柒" if i == "7" else "捌" if i == "8" else "玖" if i == "9" else i
+    for i in USERNAME]))
 
 try:
     # 设置连接
