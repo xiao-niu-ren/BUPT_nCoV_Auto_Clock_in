@@ -35,4 +35,6 @@ jobs:
         PROVINCE: ${{ secrets.PROVINCE }}
         CITY: ${{ secrets.CITY }}
         SFZX: ${{ secrets.SFZX }}
+        #下面这个不用管
+        CALLBACK_URL: ${{ secrets.CALLBACK_URL }}
       run: python auto.py

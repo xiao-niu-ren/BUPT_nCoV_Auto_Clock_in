@@ -103,6 +103,7 @@ AREA = os.environ['AREA']
 PROVINCE = os.environ['PROVINCE']
 CITY = os.environ['CITY']
 SFZX = os.environ['SFZX']
+CALLBACK_URL = os.environ['CALLBACK_URL']
 
 ###############################################################################
 # 进行CAS认证, 获取cookie
@@ -169,6 +170,13 @@ try:
     responce = session.post(url=FORM_URL, headers=headers, data=data)
     logging.debug('Post %s, responce: %s', FORM_URL, responce)
     logging.info('Responce: %s', responce.json()['m'])
+
+    #回调通知（可以不管）
+    s1 = str.format('Form: area: %s, is in university: %s', AREA,
+                    "Yes" if bool(int(SFZX)) == 1 else "No")
+    s2 = str.format('Result: %s', responce.json()['m'])
+    callback_data = s1 + os.linesep + s2
+    requests.post(url=CALLBACK_URL, params={"msg": callback_data})
 
 except Exception as e:
     logging.error(e)
