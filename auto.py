@@ -171,11 +171,11 @@ try:
     logging.debug('Post %s, responce: %s', FORM_URL, responce)
     logging.info('Responce: %s', responce.json()['m'])
 
-    # 回调通知（可以不管）
-    s1 = str.format('Form: area: %s, is in university: %s', AREA,
-                    "Yes" if bool(int(SFZX)) == 1 else "No")
-    s2 = str.format('Result: %s', responce.json()['m'])
-    callback_data = s1 + os.linesep + s2
+    #回调通知（可以不管）
+    s1 = '地区: {0}'.format(AREA)
+    s2 = '是否在校: {0}'.format("Yes" if bool(int(SFZX)) == 1 else "No")
+    s3 = str.format('Result: {0}', responce.json()['m'])
+    callback_data = "#每日填报" + os.linesep + s1 + os.linesep + s2 + os.linesep + s3
     requests.post(url=CALLBACK_URL, params={"msg": callback_data})
 
 except Exception as e:
