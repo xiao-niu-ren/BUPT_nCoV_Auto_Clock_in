@@ -171,7 +171,7 @@ try:
     logging.debug('Post %s, responce: %s', FORM_URL, responce)
     logging.info('Responce: %s', responce.json()['m'])
 
-    #回调通知（可以不管）
+    # 回调通知（可以不管）
     s1 = str.format('Form: area: %s, is in university: %s', AREA,
                     "Yes" if bool(int(SFZX)) == 1 else "No")
     s2 = str.format('Result: %s', responce.json()['m'])
