@@ -111,10 +111,6 @@ except Exception as e:
 ###############################################################################
 # 进行CAS认证, 获取cookie
 ###############################################################################
-'''
-secret的value会被github屏蔽为*
-所以要用#分隔一些内容
-'''
 
 # logging.info('Start authorize for %s ...', "#".join([
 #     "零" if i == "0" else "壹" if i == "1" else "贰" if i == "2" else "叁" if i == "3" else "肆" if i == "4" else "伍" if i == "5" else "陆" if i == "6" else "柒" if i == "7" else "捌" if i == "8" else "玖" if i == "9" else i
@@ -122,58 +118,65 @@ secret的value会被github屏蔽为*
 logging.info('Start authorize ...')
 
 try:
-    # 设置连接
-    session = requests.Session()
+    try:
+        # 设置连接
+        session = requests.Session()
 
-    # 发送请求，设置cookies
-    headers = {"User-Agent": USER_AGENT}
-    params = {"service": SERVICE}
-    responce = session.get(url=LOGIN_URL, headers=headers, params=params)
-    logging.debug('Get: %s %s', LOGIN_URL, responce)
+        # 发送请求，设置cookies
+        headers = {"User-Agent": USER_AGENT}
+        params = {"service": SERVICE}
+        responce = session.get(url=LOGIN_URL, headers=headers, params=params)
+        logging.debug('Get: %s %s', LOGIN_URL, responce)
 
-    # 获取execution
-    html = etree.HTML(responce.content)
-    execution = html.xpath(EXECUTION_XPATH)[0]
-    logging.debug('execution: %s', execution)
+        # 获取execution
+        html = etree.HTML(responce.content)
+        execution = html.xpath(EXECUTION_XPATH)[0]
+        logging.debug('execution: %s', execution)
 
-    # 构造表单数据
-    data = {
-        'username': USERNAME,
-        'password': PASSWORD,
-        'submit': "登录",
-        'type': 'username_password',
-        'execution': execution,
-        '_eventId': "submit"
-    }
-    logging.debug(data)
+        # 构造表单数据
+        data = {
+            'username': USERNAME,
+            'password': PASSWORD,
+            'submit': "登录",
+            'type': 'username_password',
+            'execution': execution,
+            '_eventId': "submit"
+        }
+        logging.debug(data)
 
-    # 登录到疫情防控通
-    responce = session.post(url=LOGIN_URL, headers=headers, data=data)
-    logging.debug('Post %s, responce: %s', LOGIN_URL, responce)
+        # 登录到疫情防控通
+        responce = session.post(url=LOGIN_URL, headers=headers, data=data)
+        logging.debug('Post %s, responce: %s', LOGIN_URL, responce)
 
-    logging.info('Authorize successed !!!')
+        logging.info('Authorize successed !!!')
 
-    ###############################################################################
-    # 进行填报
-    ###############################################################################
+        ###############################################################################
+        # 进行填报
+        ###############################################################################
 
-    logging.info('Start form ...')
-    # 设置表单数据
-    data = DATA
-    data['created'] = str(round(time.time()))
-    data['area'] = AREA
-    data['city'] = CITY
-    data['province'] = PROVINCE
-    data['sfzx'] = SFZX
+        logging.info('Start form ...')
+        # 设置表单数据
+        data = DATA
+        data['created'] = str(round(time.time()))
+        data['area'] = AREA
+        data['city'] = CITY
+        data['province'] = PROVINCE
+        data['sfzx'] = SFZX
 
-    # logging.info('Form: area: %s, is in university: %s', "#".join([i for i in AREA]),
-    #              "Yes" if bool(int(SFZX)) == 1 else "No")
-    logging.debug(data)
+        # logging.info('Form: area: %s, is in university: %s', "#".join([i for i in AREA]),
+        #              "Yes" if bool(int(SFZX)) == 1 else "No")
+        logging.debug(data)
 
-    # 填报
-    responce = session.post(url=FORM_URL, headers=headers, data=data)
-    logging.debug('Post %s, responce: %s', FORM_URL, responce)
-    logging.info('Responce: %s', responce.json()['m'])
+        # 填报
+        responce = session.post(url=FORM_URL, headers=headers, data=data)
+        logging.debug('Post %s, responce: %s', FORM_URL, responce)
+        logging.info('Responce: %s', responce.json()['m'])
+    except Exception as e:
+        try:
+            requests.post(url=CALLBACK_URL, params={"msg": "#每日填报" + os.linesep + "Result: 自动填报失败"})
+        except Exception as e:
+            logging.info("callback error")
+        raise e
 
     # 回调通知（可以不管）
     s1 = '地区: {0}'.format(AREA)
