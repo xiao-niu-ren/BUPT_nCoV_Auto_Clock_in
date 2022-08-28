@@ -103,7 +103,10 @@ AREA = os.environ['AREA']
 PROVINCE = os.environ['PROVINCE']
 CITY = os.environ['CITY']
 SFZX = os.environ['SFZX']
-CALLBACK_URL = os.environ['CALLBACK_URL']
+try:
+    CALLBACK_URL = os.environ['CALLBACK_URL']
+except Exception as e:
+    pass
 
 ###############################################################################
 # 进行CAS认证, 获取cookie
@@ -177,7 +180,10 @@ try:
     s2 = '是否在校: {0}'.format("Yes" if bool(int(SFZX)) == 1 else "No")
     s3 = str.format('Result: {0}', responce.json()['m'])
     callback_data = "#每日填报" + os.linesep + s1 + os.linesep + s2 + os.linesep + s3
-    requests.post(url=CALLBACK_URL, params={"msg": callback_data})
+    try:
+        requests.post(url=CALLBACK_URL, params={"msg": callback_data})
+    except Exception as e:
+        logging.info("callback error")
 
 except Exception as e:
     logging.error(e)
