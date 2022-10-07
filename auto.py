@@ -184,6 +184,7 @@ try:
     s3 = str.format('Result: {0}', responce.json()['m'])
     callback_data = "#每日填报" + os.linesep + s1 + os.linesep + s2 + os.linesep + s3
     try:
+        # 只回调成功的第一次
         if responce.json()['m'] != "今天已经填报了":
             requests.post(url=CALLBACK_URL, params={"msg": callback_data})
     except Exception as e:
