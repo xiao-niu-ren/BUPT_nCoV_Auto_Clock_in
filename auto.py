@@ -147,7 +147,6 @@ try:
         # 登录到疫情防控通
         responce = session.post(url=LOGIN_URL, headers=headers, data=data)
         logging.debug('Post %s, responce: %s', LOGIN_URL, responce)
-
         logging.info('Authorize successed !!!')
 
         ###############################################################################
